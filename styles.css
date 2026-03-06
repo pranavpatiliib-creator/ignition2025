@@ -29,10 +29,10 @@ body {
 }
 
 .page {
-  width: min(980px, 92vw);
-  margin: 42px auto;
+  width: min(980px, calc(100vw - 32px));
+  margin: clamp(14px, 4vw, 42px) auto;
   display: grid;
-  gap: 24px;
+  gap: clamp(16px, 2.8vw, 24px);
 }
 
 .hero {
@@ -205,10 +205,12 @@ input[type="radio"] {
 
 .matrix-wrapper {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .rating-matrix {
   width: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
@@ -231,7 +233,11 @@ input[type="radio"] {
 .rating-matrix tbody th {
   text-align: left;
   font-weight: 600;
-  width: 54%;
+  width: 50%;
+}
+
+.rating-matrix input[type="radio"] {
+  margin: 0;
 }
 
 .stars {
@@ -351,10 +357,38 @@ input[type="radio"] {
   }
 }
 
+@media (max-width: 768px) {
+  .page {
+    width: min(980px, calc(100vw - 24px));
+  }
+
+  .hero {
+    padding: 12px 6px;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.45rem, 6.5vw, 2.2rem);
+  }
+
+  .form-card {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .rating-matrix th,
+  .rating-matrix td {
+    padding: 7px 5px;
+  }
+
+  .rating-matrix tbody th {
+    font-size: 0.83rem;
+    line-height: 1.4;
+  }
+}
+
 @media (max-width: 640px) {
   .page {
-    margin: 14px auto;
-    width: min(98vw, 640px);
+    width: min(980px, calc(100vw - 16px));
   }
 
   .form-card {
@@ -389,6 +423,10 @@ input[type="radio"] {
     font-size: 0.96rem;
   }
 
+  .matrix-wrapper {
+    overflow-x: visible;
+  }
+
   .actions {
     justify-content: stretch;
     margin-top: 4px;
@@ -400,6 +438,91 @@ input[type="radio"] {
   }
 
   .rating-matrix {
-    min-width: 560px;
+    font-size: 0.82rem;
+  }
+
+  .rating-matrix tbody th {
+    width: 44%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: clamp(1.35rem, 7.4vw, 1.85rem);
+    line-height: 1.2;
+  }
+
+  .hero-text {
+    font-size: 0.94rem;
+  }
+
+  .rating-matrix {
+    border: 0;
+    background: transparent;
+  }
+
+  .rating-matrix thead {
+    display: none;
+  }
+
+  .rating-matrix tbody {
+    display: grid;
+    gap: 10px;
+  }
+
+  .rating-matrix tbody tr {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: #fff;
+    padding: 10px 8px;
+  }
+
+  .rating-matrix tbody th {
+    flex: 0 0 100%;
+    width: 100%;
+    border: 0;
+    padding: 0 0 8px;
+    font-size: 0.84rem;
+    line-height: 1.35;
+  }
+
+  .rating-matrix tbody td {
+    flex: 0 0 20%;
+    border: 0;
+    padding: 2px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .rating-matrix tbody td::before {
+    color: var(--muted);
+    font-size: 0.68rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .rating-matrix tbody td:nth-of-type(1)::before {
+    content: "5";
+  }
+
+  .rating-matrix tbody td:nth-of-type(2)::before {
+    content: "4";
+  }
+
+  .rating-matrix tbody td:nth-of-type(3)::before {
+    content: "3";
+  }
+
+  .rating-matrix tbody td:nth-of-type(4)::before {
+    content: "2";
+  }
+
+  .rating-matrix tbody td:nth-of-type(5)::before {
+    content: "1";
   }
 }
