@@ -17,6 +17,10 @@
   box-sizing: border-box;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   margin: 0;
   font-family: "Manrope", sans-serif;
@@ -40,6 +44,32 @@ body {
   padding: 18px 12px;
 }
 
+.hero-brand {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 18px;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.hero-logo {
+  width: clamp(84px, 10vw, 110px);
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 8px 18px rgba(16, 33, 62, 0.16);
+  flex-shrink: 0;
+}
+
+.hero-copy {
+  text-align: center;
+  width: auto;
+  max-width: 760px;
+  min-width: 0;
+  flex: 1;
+}
+
 .eyebrow {
   margin: 0;
   color: var(--primary);
@@ -53,6 +83,10 @@ body {
   margin: 0;
   font-size: clamp(1.8rem, 4.5vw, 3rem);
   line-height: 1.15;
+}
+
+.hero h1 + h1 {
+  margin-top: 2px;
 }
 
 .hero-text {
@@ -366,6 +400,15 @@ input[type="radio"] {
     padding: 12px 6px;
   }
 
+  .hero-brand {
+    gap: 14px;
+  }
+
+  .hero-logo {
+    width: 84px;
+    border-radius: 10px;
+  }
+
   .hero h1 {
     font-size: clamp(1.45rem, 6.5vw, 2.2rem);
   }
@@ -400,8 +443,24 @@ input[type="radio"] {
     padding: 10px 4px;
   }
 
+  .hero-brand {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  .hero-logo {
+    width: 76px;
+    border-radius: 9px;
+  }
+
+  .hero-copy {
+    width: 100%;
+  }
+
   .hero h1 {
-    font-size: clamp(1.5rem, 8vw, 2.1rem);
+    font-size: clamp(1.3rem, 6.8vw, 1.9rem);
   }
 
   .hero-text {
@@ -414,13 +473,17 @@ input[type="radio"] {
 
   label,
   legend {
-    font-size: 0.95rem;
+    font-size: 1rem;
+    line-height: 1.45;
   }
 
   input[type="text"],
+  input[type="email"],
+  select,
   textarea {
     padding: 11px 12px;
-    font-size: 0.96rem;
+    font-size: 16px;
+    line-height: 1.35;
   }
 
   .matrix-wrapper {
@@ -438,7 +501,7 @@ input[type="radio"] {
   }
 
   .rating-matrix {
-    font-size: 0.82rem;
+    font-size: 0.9rem;
   }
 
   .rating-matrix tbody th {
@@ -447,13 +510,22 @@ input[type="radio"] {
 }
 
 @media (max-width: 480px) {
+  .hero-brand {
+    gap: 10px;
+  }
+
+  .hero-logo {
+    width: 58px;
+    border-radius: 8px;
+  }
+
   .hero h1 {
-    font-size: clamp(1.35rem, 7.4vw, 1.85rem);
+    font-size: clamp(1.22rem, 6.5vw, 1.6rem);
     line-height: 1.2;
   }
 
-  .hero-text {
-    font-size: 0.94rem;
+3  .hero-text {
+    font-size: 1rem;
   }
 
   .rating-matrix {
